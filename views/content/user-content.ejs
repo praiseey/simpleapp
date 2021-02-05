@@ -1,0 +1,229 @@
+<!-- USER VIEW STARTS HERE -->
+
+<% if(title == 'Create User') { %>
+    <div class="col-sm-8">    
+        <div class="jumbotron">
+            <form action="" method="post">
+              First Name:<br>
+              <input type="text" name="first_name" placeholder="First Name">
+              <br><br>
+              Last Name:<br>
+              <input type="text" name="last_name" placeholder="Last Name">
+              <br><br>
+              Username:<br>
+              <input type="text" name="username" placeholder="Username">
+              <br><br>
+              Email Address:<br>
+              <input type="email" name="email" placeholder="hello@manifest.com">
+              <br><br>
+              Date of Birth:<br>
+              <input type="text" name="date_of_birth" placeholder="dd-mm-yyyy">
+              <br><br>
+              Phone:<br>
+              <input type="text" name="phone" placeholder="2348123456789">
+              <br><br>
+              Gender:<br>
+              <select name="gender">
+                  <option value="female">Female</option>
+                  <option value="male">Male</option>
+              </select 
+              <br><br>
+              Created Date:<br>
+              <input type="text" name="created_dt" placeholder="dd-mm-yyyy">
+              <br><br>
+              Status:<br>
+              <select name="status">
+                  <option value="active">Active</option>
+                  <option value="inactive">Inactive</option>
+              </select
+              <br><br>
+              <input type="submit" value="Create User">
+            </form>
+        </div>
+    </div>
+<% } else if (title == 'User Details') { %>
+    <div class="col-sm-8">    
+        <div class="">
+             <h1>Details of a Single user - <%= user.first_name %> <%= user.last_name %> </h1>
+             <p>I am a user for this ID = <%= user.id %></p>
+             <p>First Name: <%= user.first_name %></p>
+             <p>Last Name:  <%= user.last_name %></p>
+             <p>Username:  <%= user.username %></p>
+             <p>Email Address:  <%= user.email %></p>
+             <p>Date of Birth:  <%= user.date_of_birth %></p>
+             <p>Phone:  <%= user.phone %></p>
+             <p>Gender:  <%= user.gender %></p>
+             <p>Created Date:  <%= user.created_dt %></p>
+             <p>Status:  <%= user.stat %></p>
+             <a href="/blog/user/<%= user.id %>/update">Edit  User</a> | <a href="/blog/user/<%= user.id %>/delete">Delete User</a>
+        
+        </div>
+    </div>
+    
+<% } else if (title == 'User List') { %>
+    <div class="col-sm-8">    
+        <div class="">
+            <ol>
+            <% users.forEach(function(user) { %>
+                    <li>
+                        <h4><a href="/blog/user/<%= user.id %>"><%= user.first_name %></a></h4>
+                        <p>First Name: <%= user.first_name %> - Last Name: <%= user.last_name %> - Email: <%= user.email %></p>
+                           <a href="/blog/user/<%= user.id %>/">View User</a>
+                    </li>
+                <br/>
+            <% }); %>
+            </ol>
+        </div>
+        
+        <!--FEMALE USERS-->
+        <div class="">
+            <h4><%= gender[0] %> Users</h4>
+            <ol>
+            <% users.forEach(function(user) { %>
+                <% if (user.gender == gender[0]) { %>
+                    <li>
+                        <h4><a href="/blog/user/<%= user.id %>"><%= user.first_name %></a></h4>
+                        <p>First Name: <%= user.first_name %> - Last Name: <%= user.last_name %> - Email: <%= user.email %></p>
+                           <a href="/blog/user/<%= user.id %>/">View User</a>
+                    </li>
+                <% } else { %>
+                    
+                <% } %>
+                
+                <br/>
+                
+                <% }); %>
+            </ol>
+        </div>
+        
+        <!--MALE USERS-->
+        <div class="">
+            <h4><%= gender[1] %> Users</h4>
+            <ol>
+            <% users.forEach(function(user) { %>
+                <% if (user.gender == gender[1]) { %>
+                    <li>
+                        <h4><a href="/blog/user/<%= user.id %>"><%= user.first_name %></a></h4>
+                        <p>First Name: <%= user.first_name %> - Last Name: <%= user.last_name %> - Email: <%= user.email %></p>
+                           <a href="/blog/user/<%= user.id %>/">View User</a>
+                    </li>
+                <% } else { %>
+                    
+                <% } %>
+                
+                <br/>
+                
+                <% }); %>
+            </ol>
+        </div>
+        
+        <!--ACTIVE USERS-->
+        <div class="">
+            <h4><%= stat[0] %> Users</h4>
+            <ol>
+            <% users.forEach(function(user) { %>
+                <% if (user.stat == stat[0]) { %>
+                    <li>
+                        <h4><a href="/blog/user/<%= user.id %>"><%= user.first_name %></a></h4>
+                        <p>First Name: <%= user.first_name %> - Last Name: <%= user.last_name %> - Email: <%= user.email %></p>
+                           <a href="/blog/user/<%= user.id %>/">View User</a>
+                    </li>
+                <% } else { %>
+                    
+                <% } %>
+                
+                <br/>
+                
+                <% }); %>
+            </ol>
+        </div>
+        
+        <!--INACTIVE USERS-->
+        <div class="">
+            <h4><%= stat[1] %> Users</h4>
+            <ol>
+            <% users.forEach(function(user) { %>
+                <% if (user.stat == stat[1]) { %>
+                    <li>
+                        <h4><a href="/blog/user/<%= user.id %>"><%= user.first_name %></a></h4>
+                        <p>First Name: <%= user.first_name %> - Last Name: <%= user.last_name %> - Email: <%= user.email %></p>
+                           <a href="/blog/user/<%= user.id %>/">View User</a>
+                    </li>
+                <% } else { %>
+                    
+                <% } %>
+                
+                <br/>
+                
+                <% }); %>
+            </ol>
+        </div>
+
+       
+    </div>
+
+<% } else if (title == 'Update User') { %>
+     <div class="col-sm-8">    
+        <div class="jumbotron">
+            <form action="" method="post">
+              First Name:<br>
+              <input type="text" name="first_name" placeholder="First Name">
+              <br><br>
+              Last Name:<br>
+              <input type="text" name="last_name" placeholder="Last Name">
+              <br><br>
+              Username:<br>
+              <input type="text" name="username" placeholder="Username">
+              <br><br>
+              Email Address:<br>
+              <input type="email" name="email" placeholder="hello@manifest.com">
+              <br><br>
+              Date of Birth:<br>
+              <input type="text" name="date_of_birth" placeholder="dd-mm-yyyy">
+              <br><br>
+              Phone:<br>
+              <input type="text" name="phone" placeholder="2348123456789">
+              <br><br>
+              Gender:<br>
+              <select name="gender">
+                  <option value="female">Female</option>
+                  <option value="male">Male</option>
+              </select 
+              <br><br>
+              Created Date:<br>
+              <input type="text" name="created_dt" placeholder="dd-mm-yyyy">
+              <br><br>
+              Status:<br>
+              <select name="status">
+                  <option value="active">Active</option>
+                  <option value="inactive">Inactive</option>
+              </select
+              <br><br>
+              <input type="submit" value="Create User">
+            </form>
+        </div>
+    </div>
+<% } else if (title == 'Delete User') { %>
+    <!--do something-->
+<% } else { %>
+    <!--do something-->
+<% } %>
+<!--USER VIEW ENDS HERE-->
+
+
+<script>
+    function checkCat() {
+    var checkBoxes = document.getElementsByClassName( 'categoryCheckbox' );
+    var isChecked = false;
+    for (var i = 0; i < checkBoxes.length; i++) {
+        if ( checkBoxes[i].checked ) {
+            isChecked = true;
+        };
+    };
+    if ( isChecked ) {
+        
+        } else {
+            alert( 'Please, check at least one checkbox!' );
+        }   
+}
+</script>
